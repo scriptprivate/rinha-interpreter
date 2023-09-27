@@ -26,5 +26,3 @@ The `main.pl` script serves as the entry point of the interpreter.
 
 - It defines the variable `$filepath` with the path to the JSON file containing the Rinha AST.
 - It calls the `process_file` function from the `Interpreter` module, passing the file path as an argument to initiate the interpretation process.
-
-This script serves as the entry point to start the interpretation of the code represented by the Rinha AST.
