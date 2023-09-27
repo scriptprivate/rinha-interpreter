@@ -1,0 +1,34 @@
+{
+  "name": "tuple.rinha",
+  "expression": {
+    "kind": "Tuple",
+    "first": {
+      "kind": "Int",
+      "value": 3,
+      "location": {
+        "start": 1,
+        "end": 2,
+        "filename": "tuple.rinha"
+      }
+    },
+    "second": {
+      "kind": "Int",
+      "value": 4,
+      "location": {
+        "start": 4,
+        "end": 5,
+        "filename": "tuple.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 6,
+      "filename": "tuple.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 6,
+    "filename": "tuple.rinha"
+  }
+}

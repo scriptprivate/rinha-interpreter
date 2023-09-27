@@ -1,0 +1,35 @@
+{
+  "name": "sub.rinha",
+  "expression": {
+    "kind": "Binary",
+    "lhs": {
+      "kind": "Int",
+      "value": 3,
+      "location": {
+        "start": 0,
+        "end": 1,
+        "filename": "sub.rinha"
+      }
+    },
+    "op": "Sub",
+    "rhs": {
+      "kind": "Int",
+      "value": 7,
+      "location": {
+        "start": 4,
+        "end": 5,
+        "filename": "sub.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 5,
+      "filename": "sub.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 5,
+    "filename": "sub.rinha"
+  }
+}

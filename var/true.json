@@ -1,0 +1,17 @@
+{
+  "name": "true.rinha",
+  "expression": {
+    "kind": "Bool",
+    "value": true,
+    "location": {
+      "start": 0,
+      "end": 4,
+      "filename": "true.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 4,
+    "filename": "true.rinha"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "string.rinha",
+  "expression": {
+    "kind": "Str",
+    "value": "palavra usada",
+    "location": {
+      "start": 0,
+      "end": 15,
+      "filename": "string.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 15,
+    "filename": "string.rinha"
+  }
+}

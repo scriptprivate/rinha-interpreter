@@ -1,0 +1,42 @@
+{
+  "name": "first.rinha",
+  "expression": {
+    "kind": "First",
+    "value": {
+      "kind": "Tuple",
+      "first": {
+        "kind": "Int",
+        "value": 1,
+        "location": {
+          "start": 7,
+          "end": 8,
+          "filename": "first.rinha"
+        }
+      },
+      "second": {
+        "kind": "Int",
+        "value": 2,
+        "location": {
+          "start": 10,
+          "end": 11,
+          "filename": "first.rinha"
+        }
+      },
+      "location": {
+        "start": 6,
+        "end": 12,
+        "filename": "first.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 13,
+      "filename": "first.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 13,
+    "filename": "first.rinha"
+  }
+}

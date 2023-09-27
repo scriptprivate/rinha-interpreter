@@ -1,0 +1,35 @@
+{
+  "name": "eq.rinha",
+  "expression": {
+    "kind": "Binary",
+    "lhs": {
+      "kind": "Str",
+      "value": "a",
+      "location": {
+        "start": 0,
+        "end": 3,
+        "filename": "eq.rinha"
+      }
+    },
+    "op": "Eq",
+    "rhs": {
+      "kind": "Str",
+      "value": "a",
+      "location": {
+        "start": 7,
+        "end": 10,
+        "filename": "eq.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 10,
+      "filename": "eq.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 10,
+    "filename": "eq.rinha"
+  }
+}

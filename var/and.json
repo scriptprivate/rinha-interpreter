@@ -1,0 +1,35 @@
+{
+  "name": "and.rinha",
+  "expression": {
+    "kind": "Binary",
+    "lhs": {
+      "kind": "Bool",
+      "value": true,
+      "location": {
+        "start": 0,
+        "end": 4,
+        "filename": "and.rinha"
+      }
+    },
+    "op": "And",
+    "rhs": {
+      "kind": "Bool",
+      "value": false,
+      "location": {
+        "start": 8,
+        "end": 13,
+        "filename": "and.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 13,
+      "filename": "and.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 13,
+    "filename": "and.rinha"
+  }
+}

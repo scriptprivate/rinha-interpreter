@@ -1,0 +1,35 @@
+{
+  "name": "neq.rinha",
+  "expression": {
+    "kind": "Binary",
+    "lhs": {
+      "kind": "Str",
+      "value": "a",
+      "location": {
+        "start": 0,
+        "end": 3,
+        "filename": "neq.rinha"
+      }
+    },
+    "op": "Neq",
+    "rhs": {
+      "kind": "Str",
+      "value": "b",
+      "location": {
+        "start": 7,
+        "end": 10,
+        "filename": "neq.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 10,
+      "filename": "neq.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 10,
+    "filename": "neq.rinha"
+  }
+}

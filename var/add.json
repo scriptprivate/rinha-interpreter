@@ -1,0 +1,35 @@
+{
+  "name": "add.rinha",
+  "expression": {
+    "kind": "Binary",
+    "lhs": {
+      "kind": "Int",
+      "value": 3,
+      "location": {
+        "start": 0,
+        "end": 1,
+        "filename": "add.rinha"
+      }
+    },
+    "op": "Add",
+    "rhs": {
+      "kind": "Int",
+      "value": 2,
+      "location": {
+        "start": 4,
+        "end": 5,
+        "filename": "add.rinha"
+      }
+    },
+    "location": {
+      "start": 0,
+      "end": 5,
+      "filename": "add.rinha"
+    }
+  },
+  "location": {
+    "start": 0,
+    "end": 5,
+    "filename": "add.rinha"
+  }
+}
