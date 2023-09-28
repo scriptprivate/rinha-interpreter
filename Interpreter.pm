@@ -4,6 +4,7 @@ use warnings;
 use lib '/app/';
 use Kinds;
 use JSON;
+use Data::Dumper;
 
 our @EXPORT = qw(
     process_file
@@ -31,51 +32,125 @@ sub cache {
 
 sub identify_type {
     my ($node) = @_;
-    my $location = Loc(%{ $node->{location} });
 
     if (defined $node->{kind} && $node->{kind} eq "File") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return File($node->{name}, identify_type($node->{expression}), $location);
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Let") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Let("Let", $location, identify_type($node->{name}), identify_type($node->{value}), identify_type($node->{next}));
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Function") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Function("Function", $location, [map { identify_type($_) } @{ $node->{parameters} }], identify_type($node->{value}));
     }
     elsif (defined $node->{kind} && $node->{kind} eq "If") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return If("If", $location, identify_type($node->{condition}), identify_type($node->{then}), identify_type($node->{otherwise}));
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Call") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Call("Call", $location, $node->{callee}->{text}, [map { identify_type($_) } @{ $node->{arguments} }]);
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Var") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Var("Var", $location, $node->{text});
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Binary") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Binary("Binary", $location, identify_type($node->{lhs}), $node->{op}, identify_type($node->{rhs}));
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Int") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Int("Int", $location, $node->{value});
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Str") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Str("Str", $location, $node->{value});
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Bool") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Bool("Bool", $location, $node->{value});
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Print") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return PrintFunction("Print", $location, identify_type($node->{value}));
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Tuple") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Tuple("Tuple", $location, identify_type($node->{first}), identify_type($node->{second}));
     }
     elsif (defined $node->{kind} && $node->{kind} eq "First") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return FirstFunction("First", $location, identify_type($node->{value}));
     }
     elsif (defined $node->{kind} && $node->{kind} eq "Second") {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return SecondFunction("Second", $location, identify_type($node->{value}));
     }
     else {
+        my $location = {
+            start    => $node->{location}->{start},
+            end      => $node->{location}->{end},
+            filename => $node->{location}->{filename},
+        };
         return Parameter($node->{text}, $location);
     }
 }
@@ -102,11 +177,11 @@ sub read_node {
         return $op->($lhs, $rhs);
     }
     elsif (defined $ast->{kind} && $ast->{kind} eq "Call") {
-        my $method = $context->{$ast->{callee}};
+        my $method = $context->{$ast->{callee}->{text}};
         my %method_context = %$context;
         my @arguments = @{$ast->{arguments}};
-        foreach my $argument (@arguments) {
-            $method_context{$method->{parameters}->[$_]->{text}} = read_node($argument, \%method_context);
+        foreach my $i (0..$#arguments) {
+            $method_context{$method->{parameters}->[$i]->{text}} = read_node($arguments[$i], \%method_context);
         }
         return read_node($method->{value}, \%method_context);
     }
@@ -156,7 +231,9 @@ sub process_file {
     my $tree = identify_type($ast);
 
     eval {
-        read_node($tree, \%context_variables);
+        my $result = read_node($tree, \%context_variables);
+
+        print Dumper($result);
     };
 
     if ($@) {
